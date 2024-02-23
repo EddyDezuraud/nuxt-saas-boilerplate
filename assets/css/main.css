@@ -1,0 +1,27 @@
+body {
+  background: linear-gradient(#090D0F, #0F1314);
+  min-height: 100vh;
+  color: white;
+  font-family: 'Inter', sans-serif;
+}
+
+.title {
+  font-family: 'Inria Serif', serif;
+  font-weight: bold;
+  font-size: 48px;
+}
+
+
+/* Médias responsive */
+@media (max-width: 768px) {
+  /* Styles spécifiques aux écrans de moins de 768px */
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Styles spécifiques aux écrans entre 768px et 1024px */
+}
+
+@media (min-width: 1024px) {
+  /* Styles spécifiques aux écrans de plus de 1024px */
+}
+  
