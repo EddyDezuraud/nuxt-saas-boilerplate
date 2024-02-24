@@ -1,0 +1,15 @@
+:root {
+    /* texts */
+    --title-xl: 700 48px 'Inria Serif'; 
+    --text: 300 16px 'Inter';
+
+    
+
+
+    /* gaps */
+    --gap-xl: 36px;
+    --gap-l : 24px;
+    --gap-m: 12px;
+    --gap-s: 6px;
+    --gap-xs: 2px;
+}

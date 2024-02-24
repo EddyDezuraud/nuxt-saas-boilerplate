@@ -1,6 +1,9 @@
 <template>
     <div>
-        Jemmp
-        <h1 class="title">jejeje</h1>
+        <PageHeading 
+            label="Build your SaaS faster and easier" 
+            title="Boost your SaaS with Nuxt Boilerplate" 
+            subtitle="Accelerate your development and save valuable time with a solid and flexible foundation." 
+        />
     </div>
 </template>    

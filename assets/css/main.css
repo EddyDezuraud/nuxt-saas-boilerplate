@@ -3,14 +3,8 @@ body {
   min-height: 100vh;
   color: white;
   font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
-
-.title {
-  font-family: 'Inria Serif', serif;
-  font-weight: bold;
-  font-size: 48px;
-}
-
 
 /* Médias responsive */
 @media (max-width: 768px) {

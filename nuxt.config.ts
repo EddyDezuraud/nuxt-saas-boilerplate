@@ -7,13 +7,14 @@ export default defineNuxtConfig({
   googleFonts: {
     families: {
       Inter: '200..700',
-      'Inria+Serif': true
+      'Inria+Serif': [300, 400, 700]
     }
   },
 
   css: [
+    '@/assets/css/reset.css',
+    '@/assets/css/variables.css',
     '@/assets/css/main.css',
-    '@/assets/css/reset.css'
   ],
 
 })
