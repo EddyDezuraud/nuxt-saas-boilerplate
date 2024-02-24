@@ -3,4 +3,8 @@ interface Navigation {
   _path: string;
 }
 
-export type { Navigation };
+interface Theme {
+  color: string
+}
+
+export type { Theme, Navigation };

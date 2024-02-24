@@ -32,6 +32,7 @@ const props = defineProps<Props>()
 
 .menu-link {
     position: relative;
+    font: var(--text-s);
 }
 
 .menu-link::after {

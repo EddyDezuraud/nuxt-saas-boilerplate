@@ -2,9 +2,9 @@
     /* texts */
     --title-xl: 700 48px 'Inria Serif'; 
     --text: 300 16px 'Inter';
+    --text-s: 500 14px 'Inter';
 
     --global: 1000px;
-
 
     /* gaps */
     --gap-xxl: 64px;

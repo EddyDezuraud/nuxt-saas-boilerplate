@@ -1,3 +1,11 @@
+<script lang="ts" setup>
+import type { Navigation } from '@/types/content';
+const { data } = await useAsyncData<Navigation[]>('navigation', () => fetchContentNavigation())
+const navigation = computed(() => {
+    return data.value?.filter((item: Navigation) => item._path !== '/')
+})
+</script>
+
 <template>
     <header class="page-header">
         <div class="page-header-logo-wrapper">
@@ -12,14 +20,6 @@
         <div><button>Login</button></div>
     </header>
 </template>
-
-<script lang="ts" setup>
-import type { Navigation } from '@/types/content';
-const { data } = await useAsyncData<Navigation[]>('navigation', () => fetchContentNavigation())
-const navigation = computed(() => {
-    return data.value?.filter((item: Navigation) => item._path !== '/')
-})
-</script>
 
 <style>
 .page-header {
@@ -39,6 +39,7 @@ const navigation = computed(() => {
     align-items: center;
     gap: var(--gap-m);
     font-size: 14px;
+    font-weight: 600;
     flex: 1;
 }
 

@@ -1,13 +1,3 @@
-<template>
-    <section class="page-heading">
-        <div class="page-heading-inner">
-            <Chip>{{label}}</Chip>
-            <PageHeadingTitle>{{ title }}</PageHeadingTitle>
-            <PageHeadingText>{{ subtitle }}</PageHeadingText>
-        </div>
-    </section>
-</template>
-
 <script lang="ts" setup>
 interface Props {
     label: string,
@@ -17,6 +7,17 @@ interface Props {
 
 const props = defineProps<Props>()
 </script>
+
+<template>
+    <section class="page-heading">
+        <div class="page-heading-inner">
+            <Chip>{{label}}</Chip>
+            <PageHeadingTitle>{{ title }}</PageHeadingTitle>
+            <PageHeadingText>{{ subtitle }}</PageHeadingText>
+            <ButtonMagic>Free trial</ButtonMagic>
+        </div>
+    </section>
+</template>
 
 <style>
 .page-heading {
