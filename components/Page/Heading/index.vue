@@ -23,6 +23,7 @@ const props = defineProps<Props>()
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 142px
 }
 
 .page-heading-inner {

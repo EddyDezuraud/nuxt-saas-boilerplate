@@ -3,10 +3,11 @@
     --title-xl: 700 48px 'Inria Serif'; 
     --text: 300 16px 'Inter';
 
-    
+    --global: 1000px;
 
 
     /* gaps */
+    --gap-xxl: 64px;
     --gap-xl: 36px;
     --gap-l : 24px;
     --gap-m: 12px;

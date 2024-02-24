@@ -1,0 +1,6 @@
+---
+navigation:
+  title: 'Pricing'
+---
+
+# Welcome
