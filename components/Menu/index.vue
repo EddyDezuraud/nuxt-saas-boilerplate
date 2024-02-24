@@ -30,4 +30,30 @@ const props = defineProps<Props>()
     gap: var(--gap-xxl)
 }
 
+.menu-link {
+    position: relative;
+}
+
+.menu-link::after {
+    position: absolute;
+    content: '';
+    left: -15px;
+    top: -10px; 
+    width: calc(100% + 30px);
+    height: calc(100% + 20px);
+    border-radius: 4px;
+    background: white;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.15s;
+}
+
+.menu-link:hover::after {
+    opacity: 0.05;
+}
+
+.menu-link > span {
+    position: relative;
+    z-index: 2;
+}
 </style>
