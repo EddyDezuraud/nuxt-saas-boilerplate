@@ -1,16 +1,24 @@
+<template>
+  <div :style="{'--primary-g-1': primaryG1, '--primary-g-2': primaryG2, '--primary-50': primary50}">
+    <NuxtPage/>
+  </div>
+</template>
+
 <script lang="ts" setup>
 import type { Theme } from '@/types/content';
 
 const { data: theme } = await useAsyncData<Theme>(() => queryContent('/_theme').findOne())
 
 const primaryG1 = computed(() => {
-  const color = theme.value.color;
+  if(!theme.value?.color) return '';
+  const color = theme.value?.color;
   const primaryColor = calculatePrimaryG1(color);
   return primaryColor;
 });
 
 const primaryG2 = computed(() => {
-  const color = theme.value.color;
+  if(!theme.value?.color) return '';
+  const color = theme.value?.color;
   const primaryColor = calculatePrimaryG2(color);
   return primaryColor;
 });
@@ -107,9 +115,3 @@ function hslToHex(h: number, s: number, l: number): string {
 }
 
 </script>
-
-<template>
-  <div :style="{'--primary-g-1': primaryG1, '--primary-g-2': primaryG2, '--primary-50': primary50}">
-    <NuxtPage/>
-  </div>
-</template>

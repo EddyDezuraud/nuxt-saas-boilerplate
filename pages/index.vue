@@ -1,4 +1,5 @@
 <template>
+    <Effect />
     <PageHeader />
     <section>
         <PageHeading 

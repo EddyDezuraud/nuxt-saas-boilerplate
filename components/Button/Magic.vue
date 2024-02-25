@@ -1,3 +1,11 @@
+<template>
+    <button class="button-magic">
+        <span>
+            <slot></slot>
+        </span>
+    </button>
+</template>
+
 <script lang="ts" setup>
 interface Props {
     to?: string,
@@ -9,14 +17,6 @@ const props = withDefaults(defineProps<Props>(), {
     size: 'm'
 })
 </script>
-
-<template>
-    <button class="button-magic">
-        <span>
-            <slot></slot>
-        </span>
-    </button>
-</template>
 
 <style>
 .button-magic {

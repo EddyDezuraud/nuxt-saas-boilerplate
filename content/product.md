@@ -1,6 +1,0 @@
----
-navigation:
-  title: 'Product'
----
-
-# Welcome
