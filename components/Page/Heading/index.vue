@@ -10,6 +10,7 @@ const props = defineProps<Props>()
 
 <template>
     <section class="page-heading">
+        <EffectParticles />
         <div class="page-heading-inner">
             <Chip>{{label}}</Chip>
             <PageHeadingTitle>{{ title }}</PageHeadingTitle>
