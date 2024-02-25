@@ -1,117 +1,145 @@
 <template>
-  <div :style="{'--primary-g-1': primaryG1, '--primary-g-2': primaryG2, '--primary-50': primary50}">
-    <NuxtPage/>
+  <div
+    :style="{
+      '--primary-g-1': primaryG1,
+      '--primary-g-2': primaryG2,
+      '--primary-50': primary50,
+    }"
+  >
+    <NuxtPage />
   </div>
 </template>
 
 <script lang="ts" setup>
-import type { Theme } from '@/types/content';
+import type { Theme } from "@/types/content";
 
-const { data: theme } = await useAsyncData<Theme>(() => queryContent('/_theme').findOne())
+const { data: theme } = await useAsyncData<Theme>(() =>
+  queryContent("/_theme").findOne()
+);
 
 const primaryG1 = computed(() => {
-  if(!theme.value?.color) return '';
+  if (!theme.value?.color) return "";
   const color = theme.value?.color;
-  const primaryColor = calculatePrimaryG1(color);
-  return primaryColor;
+  return calculatePrimaryG1(color);
 });
 
 const primaryG2 = computed(() => {
-  if(!theme.value?.color) return '';
+  if (!theme.value?.color) return "";
   const color = theme.value?.color;
-  const primaryColor = calculatePrimaryG2(color);
-  return primaryColor;
+  return calculatePrimaryG2(color);
 });
 
 const primary50 = computed(() => {
-  return theme.value?.color + '50';
-})
+  return theme.value?.color + "50";
+});
 
 function calculatePrimaryG1(color: string): string {
-  // Conversion de la couleur hexadécimale en HSL
-  const { h, s, l } = hexToHSL(color);
+  const { h, s, l } = hexToHsl(color);
 
-  // Ajustement des valeurs HSL pour obtenir la teinte désirée
-  const newH = 266; // Nouvelle teinte
-  const newS = 60;  // Nouvelle saturation
-  const newL = 51;  // Nouvelle luminosité
+	console.log({h,s,l})
 
-  // Conversion de la nouvelle couleur HSL en hexadécimal
-  return hslToHex(newH, newS, newL);
+  const newHsl = {
+    h: (h - 30 + 360) % 360,
+    s: Math.max(0, s - 15),
+    l: Math.min(100, l * 1.09),
+  };
+
+  return hslToHex(newHsl);
 }
 
 function calculatePrimaryG2(color: string): string {
-  // Conversion de la couleur hexadécimale en HSL
-  const { h, s, l } = hexToHSL(color);
+  const { h, s, l } = hexToHsl(color);
 
-  // Ajustement des valeurs HSL pour obtenir la teinte désirée
-  const newH = 317; // Nouvelle teinte
-  const newS = 100; // Nouvelle saturation
-  const newL = 46;  // Nouvelle luminosité
+	const newHsl = {
+    h: (h + 20) % 360,
+    s: Math.min(100, s + 25),
+    l: Math.floor(Math.min(100, l * 0.94)),
+  };
 
-  // Conversion de la nouvelle couleur HSL en hexadécimal
-  return hslToHex(newH, newS, newL);
+	console.log(newHsl)
+
+  return hslToHex(newHsl);
 }
 
-function hexToHSL(hex: string): { h: number, s: number, l: number } {
-  // Conversion de la couleur hexadécimale en RGB
-  const r = parseInt(hex.slice(1, 3), 16) / 255;
-  const g = parseInt(hex.slice(3, 5), 16) / 255;
-  const b = parseInt(hex.slice(5, 7), 16) / 255;
+interface HslColor {
+  h: number;
+  s: number;
+  l: number;
+}
 
-  // Trouver la valeur minimale et maximale des composantes RVB
-  const max = Math.max(r, g, b);
-  const min = Math.min(r, g, b);
+// Fonctions utilitaires pour convertir entre hexa et HSL
+function hexToHsl(H: string): HslColor {
+	let r = 0, g = 0, b = 0;
+  if (H.length == 4) {
+    r = "0x" + H[1] + H[1];
+    g = "0x" + H[2] + H[2];
+    b = "0x" + H[3] + H[3];
+  } else if (H.length == 7) {
+    r = "0x" + H[1] + H[2];
+    g = "0x" + H[3] + H[4];
+    b = "0x" + H[5] + H[6];
+  }
+  // Then to HSL
+  r /= 255;
+  g /= 255;
+  b /= 255;
+  let cmin = Math.min(r,g,b),
+      cmax = Math.max(r,g,b),
+      delta = cmax - cmin,
+      h = 0,
+      s = 0,
+      l = 0;
 
-  // Calcul de la luminosité
-  const l = (max + min) / 2;
+  if (delta == 0)
+    h = 0;
+  else if (cmax == r)
+    h = ((g - b) / delta) % 6;
+  else if (cmax == g)
+    h = (b - r) / delta + 2;
+  else
+    h = (r - g) / delta + 4;
 
-  let h = 0;
-  let s = 0;
+  h = Math.round(h * 60);
 
-  if (max !== min) {
-    const d = max - min;
-    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-    switch (max) {
-      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-      case g: h = (b - r) / d + 2; break;
-      case b: h = (r - g) / d + 4; break;
+  if (h < 0)
+    h += 360;
+
+  l = (cmax + cmin) / 2;
+  s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+  s = +(s * 100).toFixed(0);
+  l = +(l * 100).toFixed(0);
+
+  return { h, s, l };
+}
+
+function hslToHex(hsl: HslColor): string {
+  // Convertir la teinte de degrés en radians
+	let {h,s,l} = hsl;
+	h /= 360;
+    s /= 100;
+    l /= 100;
+    let r, g, b;
+    if (s === 0) {
+        r = g = b = l;
+    } else {
+        const hue2rgb = function (p, q, t) {
+            if (t < 0) t += 1;
+            if (t > 1) t -= 1;
+            if (t < 1 / 6) return p + (q - p) * 6 * t;
+            if (t < 1 / 2) return q;
+            if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+            return p;
+        };
+        const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+        const p = 2 * l - q;
+        r = hue2rgb(p, q, h + 1 / 3);
+        g = hue2rgb(p, q, h);
+        b = hue2rgb(p, q, h - 1 / 3);
     }
-    h *= 60;
-  }
-
-  return { h, s: s * 100, l: l * 100 };
+    const toHex = function (x) {
+        const hex = Math.round(x * 255).toString(16);
+        return hex.length === 1 ? '0' + hex : hex;
+    };
+    return '#' + toHex(r) + toHex(g) + toHex(b);
 }
-
-function hslToHex(h: number, s: number, l: number): string {
-  // Conversion de HSL en RVB
-  s /= 100;
-  l /= 100;
-  const c = (1 - Math.abs(2 * l - 1)) * s;
-  const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
-  const m = l - c / 2;
-  let r = 0, g = 0, b = 0;
-
-  if (h >= 0 && h < 60) {
-    r = c; g = x; b = 0;
-  } else if (h >= 60 && h < 120) {
-    r = x; g = c; b = 0;
-  } else if (h >= 120 && h < 180) {
-    r = 0; g = c; b = x;
-  } else if (h >= 180 && h < 240) {
-    r = 0; g = x; b = c;
-  } else if (h >= 240 && h < 300) {
-    r = x; g = 0; b = c;
-  } else if (h >= 300 && h < 360) {
-    r = c; g = 0; b = x;
-  }
-
-  // Conversion de RVB en hexadécimal
-  const rHex = Math.round((r + m) * 255).toString(16).padStart(2, '0');
-  const gHex = Math.round((g + m) * 255).toString(16).padStart(2, '0');
-  const bHex = Math.round((b + m) * 255).toString(16).padStart(2, '0');
-
-  return `#${rHex}${gHex}${bHex}`.toUpperCase();
-}
-
 </script>
