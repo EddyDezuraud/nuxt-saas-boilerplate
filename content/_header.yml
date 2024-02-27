@@ -1,0 +1,6 @@
+title: Nuxt SaaS Boilerplate
+logo: "logo.png"
+buttons:
+  - title: Login
+    to: "/login"
+    mode: glass

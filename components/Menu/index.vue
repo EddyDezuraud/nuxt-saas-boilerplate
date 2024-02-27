@@ -42,7 +42,7 @@ const props = defineProps<Props>()
     top: -10px; 
     width: calc(100% + 30px);
     height: calc(100% + 20px);
-    border-radius: 4px;
+    border-radius: 40px;
     background: white;
     z-index: 0;
     opacity: 0;

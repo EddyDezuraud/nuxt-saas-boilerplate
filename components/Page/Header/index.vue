@@ -1,25 +1,32 @@
-<script lang="ts" setup>
-import type { Navigation } from '@/types/content';
-const { data } = await useAsyncData<Navigation[]>('navigation', () => fetchContentNavigation())
-const navigation = computed(() => {
-    return data.value?.filter((item: Navigation) => item._path !== '/')
-})
-</script>
-
 <template>
     <header class="page-header">
         <div class="page-header-logo-wrapper">
             <NuxtLink to="/" class="page-header-logo">
-                <img src="/logo.png"/>
+                <img :src="`/${data.logo}`"/>
                 <span>
-                    Nuxt SaaS Boilerplate
+                    {{ data.title }}
                 </span>
             </NuxtLink>
         </div>
         <Menu :navigation="navigation"></Menu>
-        <div><button>Login</button></div>
+        <div  class="page-header-cta" v-if="data.buttons && data.buttons.length > 0">
+            <Button v-for="button in data.buttons" :key="button.to" size="m" :mode="button.mode">
+                {{button.title}}
+            </Button>
+        </div>
     </header>
 </template>
+
+<script lang="ts" setup>
+import type { Navigation } from '@/types/content';
+const { data: nav } = await useAsyncData<Navigation[]>('navigation', () => fetchContentNavigation())
+const navigation = computed(() => {
+    return nav.value?.filter((item: Navigation) => item._path !== '/')
+})
+
+
+const { data } = await useAsyncData('', () => queryContent('/_header').findOne())
+</script>
 
 <style>
 .page-header {
@@ -45,5 +52,10 @@ const navigation = computed(() => {
 
 .page-header-logo img{
     max-height: 100%;
+}
+
+.page-header-cta {
+    display: flex; 
+    justify-content: flex-end;
 }
 </style>

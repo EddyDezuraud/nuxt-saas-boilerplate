@@ -20,4 +20,9 @@ export default defineNuxtConfig({
     '@/assets/css/main.css',
   ],
 
+  content: {
+    documentDriven: true,
+    contentHead: true
+  }
+
 })

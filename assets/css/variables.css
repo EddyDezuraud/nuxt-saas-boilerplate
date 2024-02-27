@@ -2,6 +2,9 @@
     /* texts */
     --title-xl: 700 48px 'Inria Serif'; 
     --text: 300 16px 'Inter';
+    --text-button-s: 500 12px 'Inter';
+    --text-button-m: 500 14px 'Inter';
+    --text-button-l: 500 16px 'Inter';
     --text-s: 500 14px 'Inter';
 
     --global: 1000px;

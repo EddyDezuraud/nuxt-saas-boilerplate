@@ -1,11 +1,14 @@
 <template>
-    <Effect />
-    <PageHeader />
-    <section>
-        <PageHeading 
-            label="Build your SaaS faster and easier" 
-            title="Boost your SaaS with Nuxt Boilerplate" 
-            subtitle="Accelerate your development and save valuable time with a solid and flexible foundation." 
-        />
-    </section>
+    <ContentDoc v-slot="{ doc }" >
+        <Effect />
+        <PageHeader />
+        <section>
+            <PageHeading 
+                v-if="doc.heading"
+                :label="doc.heading.label" 
+                :title="doc.heading.title" 
+                :subtitle="doc.heading.subtitle" 
+            />
+        </section>
+    </ContentDoc>
 </template>    
