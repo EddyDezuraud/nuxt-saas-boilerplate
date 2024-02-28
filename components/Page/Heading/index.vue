@@ -4,7 +4,7 @@
             <Chip>{{label}}</Chip>
             <PageHeadingTitle>{{ title }}</PageHeadingTitle>
             <PageHeadingText>{{ subtitle }}</PageHeadingText>
-            <ButtonMagic>Free trial</ButtonMagic>
+            <Button mode="magic" size="xl">Free trial</Button>
         </div>
     </section>
 </template>

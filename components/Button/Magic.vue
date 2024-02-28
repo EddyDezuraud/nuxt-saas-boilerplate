@@ -24,7 +24,7 @@ const props = withDefaults(defineProps<Props>(), {
     background: linear-gradient(45deg, var(--primary-g-1), var(--primary-g-2));
     border-radius: 50px;
     color: white;
-    box-shadow: 0 0 30px 2px #FFFFFF20, 0 2px 100px 10px var(--primary-50), inset 0px -4px 4px 0 #C3C3C350, inset 0 4px 4px 0 #FFFFFF25;
+    box-shadow: 0 0 30px 2px #FFFFFF20, 0 2px 100px 10px var(--primary-50), inset 0px -4px 4px 0 #C3C3C350, inset 0 4px 4px 0 #FFFFFF25, inset 0 3px 0 #FFFFFF40;
     font: var(--text-button-l);
 }
 </style>
