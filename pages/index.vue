@@ -1,7 +1,6 @@
 <template>
     <ContentDoc v-slot="{ doc }" >
         <Effect />
-        <effect-particles />    
         <PageHeader />
         <section>
             <PageHeading 
