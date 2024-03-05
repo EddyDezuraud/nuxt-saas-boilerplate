@@ -28,6 +28,7 @@ const props = withDefaults(defineProps<Props>(), {
     padding: 10px 20px;
     font: var(--text-button-m);
     cursor: pointer;
+    transition: box-shadow 0.3s;
 }
 
 .button.glass {
@@ -56,5 +57,9 @@ const props = withDefaults(defineProps<Props>(), {
 .button.xl {
     padding: 16px 32px;
     font: var(--text-button-l);
+}
+
+.button:not(.glass):hover {
+    box-shadow: 0 5px 50px 10px #FFFFFF30, 0 2px 100px 10px var(--primary-50), inset 0px -4px 4px 0 #C3C3C350, inset 0 4px 10px 0 #FFFFFF50, inset 0 3px 10px 0 #FFFFFF90;
 }
 </style>

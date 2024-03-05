@@ -4,6 +4,7 @@
       '--primary-g-1': primaryG1,
       '--primary-g-2': primaryG2,
       '--primary-50': primary50,
+      '--primary-60': primary60,
     }"
   >
     <NuxtPage />
@@ -31,6 +32,9 @@ const primaryG2 = computed(() => {
 
 const primary50 = computed(() => {
   return theme.value?.color + "50";
+});
+const primary60 = computed(() => {
+  return theme.value?.color + "60";
 });
 
 function calculatePrimaryG1(color: string): string {
