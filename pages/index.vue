@@ -11,5 +11,8 @@
                 :subtitle="doc.heading.description" 
             />
         </section>
+        <section>
+            <PageCardMain />
+        </section>
     </ContentDoc>
 </template>    
