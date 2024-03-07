@@ -12,7 +12,7 @@
             />
         </section>
         <section>
-            <PageCardMain />
+            <PageCardMain :image="doc.mainFeature.src" />
         </section>
     </ContentDoc>
 </template>    
