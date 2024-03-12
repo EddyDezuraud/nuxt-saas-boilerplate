@@ -9,6 +9,7 @@
                 :label="doc.heading.label" 
                 :title="doc.heading.title" 
                 :subtitle="doc.heading.description" 
+                button
             />
         </section>
         <section>

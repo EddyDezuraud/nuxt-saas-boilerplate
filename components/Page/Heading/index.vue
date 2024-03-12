@@ -1,10 +1,10 @@
 <template>
     <section class="page-heading">
         <div class="page-heading-inner">
-            <Chip>{{label}}</Chip>
-            <PageHeadingTitle>{{ title }}</PageHeadingTitle>
-            <PageHeadingText>{{ subtitle }}</PageHeadingText>
-            <Button mode="magic" size="xl">Free trial</Button>
+            <Chip v-if="label">{{label}}</Chip>
+            <PageHeadingTitle v-if="title">{{ title }}</PageHeadingTitle>
+            <PageHeadingText v-if="subtitle">{{ subtitle }}</PageHeadingText>
+            <Button mode="magic" size="xl" v-if="button">Free trial</Button>
         </div>
     </section>
 </template>
@@ -13,7 +13,8 @@
 interface Props {
     label: string,
     title: string,
-    subtitle: string
+    subtitle: string,
+    button: boolean
 }
 
 const props = defineProps<Props>()
