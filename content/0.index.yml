@@ -5,6 +5,10 @@ heading:
   label: Build your SaaS faster and easier
   title: Boost your SaaS with Nuxt Boilerplate
   description: Accelerate your development and save valuable time with a solid and flexible foundation.
+  buttons:
+    - label: Free trial
+      link: /get-started
+
 
 mainFeature:
   src: /media/main-feature.svg

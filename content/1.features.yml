@@ -1,2 +1,22 @@
 navigation.title: Features
-title: Features
+navigation: true
+
+heading:
+  title: Features
+  description: Our platform offers a smooth and fast development experience. With our Nuxt Boilerplate, you can start building your SaaS application in minutes. More time spent coding means less time to market and more time to focus on innovation.
+
+features:
+  - title: Solid and Flexible Architecture
+    description: Our robust and flexible architecture is built on best development practices. With our Nuxt Boilerplate, your SaaS gets a solid foundation that evolves with your needs. No more worrying about technical foundations; focus on growing your business.
+
+  - title: Unlimited Customization
+    description: Bring your vision to life without compromise. Our Nuxt Boilerplate is fully customizable, allowing you to create a unique and memorable user experience for your customers. From unique designs to specific features, everything is in your hands.
+
+  - title: Advanced Security
+    description: Security is our priority. Our Nuxt Boilerplate comes with advanced security features built-in from the start. This allows you to offer your users a secure and reliable experience, building trust in your SaaS.
+
+  - title: Expert Support
+    description: We're here for you every step of the way. Our team of experts is available to answer your questions, solve problems, and help you get the most out of our platform. We're your partner in the success of your SaaS.
+
+  - title: Powerful Integrations
+    description: Connect seamlessly with other tools and services. Our Nuxt Boilerplate offers compatibility with a wide range of integrations, allowing you to extend the functionality of your SaaS and create rich experiences for your users.
