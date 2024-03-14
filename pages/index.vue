@@ -13,7 +13,7 @@
             />
         </section>
         <section>
-            <PageCardMain :image="doc.mainFeature.src" />
+            <PageCardBrowser :image="doc.mainFeature.src" />
         </section>
     </ContentDoc>
 </template>    
