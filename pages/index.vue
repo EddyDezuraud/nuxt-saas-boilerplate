@@ -1,6 +1,6 @@
 <template>
     <ContentDoc v-slot="{ doc }" >
-        <Effect />
+        <Effect :highlight="isButtonHovered" />
         <EffectParticles />
         <PageHeader />
         <section>
@@ -10,6 +10,8 @@
                 :title="doc.heading.title" 
                 :subtitle="doc.heading.description" 
                 :buttons="doc.heading.buttons"
+                @buttonHover="onButtonHover"
+                @buttonOut="onButtonOut"
             />
         </section>
         <section>
@@ -17,3 +19,15 @@
         </section>
     </ContentDoc>
 </template>    
+
+<script lang="ts" setup>
+const isButtonHovered = ref(false);
+
+const onButtonHover = () => {
+    isButtonHovered.value = true;
+}
+
+const onButtonOut = () => {
+    isButtonHovered.value = false;
+}
+</script>

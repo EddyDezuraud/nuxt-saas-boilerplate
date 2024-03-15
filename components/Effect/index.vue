@@ -1,8 +1,14 @@
 <template>
     <div>
-        <EffectLights />
+        <EffectLights :highlight="highlight" />
     </div>
 </template>
+
+<script setup>
+defineProps({
+    highlight: Boolean
+})
+</script>
 
 <style>
 .effect {

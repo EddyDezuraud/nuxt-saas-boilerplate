@@ -1,9 +1,15 @@
 <template>
-    <div class="effect-light">
+    <div class="effect-light" :class="[{'highlight': highlight}]">
         <div class="effect-light-el"></div>
         <div class="effect-light-el effect-light-el2"></div>
     </div>
 </template>    
+
+<script setup lang="ts">
+defineProps({
+    highlight: Boolean
+})
+</script>
 
 <style>
 .effect-light {
@@ -14,7 +20,11 @@
     height: 100%;
     display: flex;
     pointer-events: none;
-    filter: blur(80px)
+    filter: blur(80px);
+}
+
+.effect-light.highlight .effect-light-el::after {
+    opacity: 0.05;
 }
 
 .effect-light-el {
@@ -22,6 +32,7 @@
     flex: 1;
 }
 
+.effect-light-el::after,
 .effect-light-el::before {
     position: absolute;
     content: '';
@@ -31,15 +42,19 @@
     right: 20%;
     background: linear-gradient(to bottom, #FFFFFF35, #FFFFFF00);
     transform: rotate(-45deg);
+    transition: opacity 0.8s;
 }
 
+.effect-light-el2::after,
 .effect-light-el2::before {
     transform: rotate(45deg);
     right: auto;
     left: 20%;
 }
 
-/* .effect-light-el2 {
-    background: linear-gradient(-45deg, #FFFFFF00, #FFFFFF00, #FFFFFF10, #FFFFFF00, #FFFFFF00);
-} */
+.effect-light-el::after {
+    opacity: 0;
+    width: 200px;
+    background: linear-gradient(to bottom, var(--primary-g-1), var(--primary-g-2));
+}
 </style>

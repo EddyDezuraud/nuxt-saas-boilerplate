@@ -5,7 +5,7 @@
             <PageHeadingTitle v-if="title">{{ title }}</PageHeadingTitle>
             <PageHeadingText v-if="subtitle">{{ subtitle }}</PageHeadingText>
             <div class="page-heading-buttons" v-if="buttons">
-                <Button v-for="button in buttons" :key="button.link" mode="magic" size="xl" :to="button.link">{{button.label}}</Button>
+                <Button v-for="button in buttons" @mouseover="onHoverButton(button)" @mouseout="onOutButton(button)" :key="button.link" mode="magic" size="xl" :to="button.link">{{button.label}}</Button>
             </div> 
 
         </div>
@@ -25,7 +25,17 @@ interface Props {
     buttons: Button[]
 }
 
-const props = defineProps<Props>()
+const props = defineProps<Props>();
+
+const emits = defineEmits(['buttonHover', 'buttonOut']);
+
+const onHoverButton = (button: Button) => {
+    emits('buttonHover');
+}
+
+const onOutButton = (button: Button) => {
+    emits('buttonOut');
+}
 </script>
 
 <style>
