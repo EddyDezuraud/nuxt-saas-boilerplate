@@ -55,7 +55,7 @@ const props = defineProps<Props>()
     background-color: #5ACD7E;
 }
 
-.image img {
+.browser-card-image img {
     width: 100%;
 }
 </style>
