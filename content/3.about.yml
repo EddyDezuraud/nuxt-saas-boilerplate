@@ -1,2 +1,6 @@
 navigation.title: About
-title: About
+navigation: true
+
+heading:
+  title: About
+  description: We are a team of passionate developers, designers, and entrepreneurs who have come together to build a platform that makes SaaS development faster and more enjoyable. Our mission is to help you bring your ideas to life and create successful SaaS businesses.
