@@ -17,6 +17,9 @@
         <section>
             <PageCardBrowser :image="doc.mainFeature.src" />
         </section>
+        <section v-if="doc.brands">
+            <PageBrands :label="doc.brands.label" :brands="doc.brands.list" />
+        </section>
     </ContentDoc>
 </template>    
 

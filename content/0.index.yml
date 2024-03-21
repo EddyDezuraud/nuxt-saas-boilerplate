@@ -11,4 +11,25 @@ heading:
 
 
 mainFeature:
-  src: /media/main-feature.svg
+  src: media/main-feature.svg
+
+
+brands:
+  label: Trusted by the best
+  list:
+    - src: media/brands/amazon.svg
+      label: Amazon
+    - src: media/brands/netflix.svg
+      label: Netflix
+    - src: media/brands/spotify.svg
+      label: Spotify
+    - src: media/brands/airbnb.svg
+      label: Airbnb
+    - src: media/brands/uber.svg
+      label: Uber
+    - src: media/brands/lyft.svg
+      label: Lyft
+    - src: media/brands/google.svg
+      label: Google
+    - src: media/brands/microsoft.svg
+      label: Microsoft
