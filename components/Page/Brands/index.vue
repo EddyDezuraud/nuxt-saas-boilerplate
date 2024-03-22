@@ -1,9 +1,9 @@
 <template>
-    <div class="brands-carousel">
+    <div class="brands-carousel" :style="{ '--nb-brands': brands.length }">
         <h2 class="brands-label">{{label}}</h2>
         <div class="carousel-container">
             <ul class="carousel-track">
-                <li v-for="brand in brands" :key="brand.label" class="carousel-item">
+                <li v-for="brand in duplicateBrands" :key="brand.label" class="carousel-item">
                     <img :src="brand.src" :alt="brand.label" class="brand-logo" />
                 </li>
             </ul>
@@ -24,6 +24,8 @@ const props = defineProps<{
     brands: Brand[];
 }>();
 
+const duplicateBrands = props.brands.concat(props.brands);
+
 </script>
 
 <style scoped>
@@ -31,6 +33,8 @@ const props = defineProps<{
     width: 1180px;
     max-width: 100%;
     margin: 100px auto;
+
+    --nb-brands: 6;
 }
 
 .brands-label {
@@ -60,7 +64,7 @@ const props = defineProps<{
     display: flex;
     align-items: center;
     gap: 80px;
-    animation: carouselAnimation 10s infinite linear;
+    animation: carouselAnimation 20s infinite linear;
 }
 
 .brand-logo {
@@ -69,6 +73,7 @@ const props = defineProps<{
     position: relative;
     width: 120px;
     opacity: 0.5;
+    max-width: none;
 }
 
 @keyframes carouselAnimation {
@@ -76,7 +81,7 @@ const props = defineProps<{
         transform: translateX(0);
     }
     100% {
-        transform: translateX(-100%);
+        transform: translateX(calc(var(--nb-brands) * 200px * -1));
     }
 }
 
