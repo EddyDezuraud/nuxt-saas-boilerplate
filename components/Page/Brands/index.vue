@@ -68,7 +68,7 @@ const duplicateBrands = props.brands.concat(props.brands);
 }
 
 .brand-logo {
-    aspect-ratio: 3.8461538461538463 / 1;
+    aspect-ratio: 3.8 / 1;
     height: 31px;
     position: relative;
     width: 120px;
